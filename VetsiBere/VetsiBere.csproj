@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9B42D811-FCE4-4DD8-8CAD-CF4D55579B2C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>VetsiBere</RootNamespace>
+    <AssemblyName>VetsiBere</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hrac.cs" />
+    <Compile Include="Karta.cs" />
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nastaveni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nastaveni.Designer.cs">
+      <DependentUpon>Nastaveni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC_addPlayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_addPlayer.Designer.cs">
+      <DependentUpon>UC_addPlayer.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nastaveni.resx">
+      <DependentUpon>Nastaveni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UC_addPlayer.resx">
+      <DependentUpon>UC_addPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\karty\0.jpg" />
+    <Content Include="resources\karty\1.jpg" />
+    <Content Include="resources\karty\10.jpg" />
+    <Content Include="resources\karty\11.jpg" />
+    <Content Include="resources\karty\12.jpg" />
+    <Content Include="resources\karty\13.jpg" />
+    <Content Include="resources\karty\14.jpg" />
+    <Content Include="resources\karty\15.jpg" />
+    <Content Include="resources\karty\16.jpg" />
+    <Content Include="resources\karty\17.jpg" />
+    <Content Include="resources\karty\18.jpg" />
+    <Content Include="resources\karty\19.jpg" />
+    <Content Include="resources\karty\2.jpg" />
+    <Content Include="resources\karty\20.jpg" />
+    <Content Include="resources\karty\21.jpg" />
+    <Content Include="resources\karty\22.jpg" />
+    <Content Include="resources\karty\23.jpg" />
+    <Content Include="resources\karty\24.jpg" />
+    <Content Include="resources\karty\25.jpg" />
+    <Content Include="resources\karty\26.jpg" />
+    <Content Include="resources\karty\27.jpg" />
+    <Content Include="resources\karty\28.jpg" />
+    <Content Include="resources\karty\29.jpg" />
+    <Content Include="resources\karty\3.jpg" />
+    <Content Include="resources\karty\30.jpg" />
+    <Content Include="resources\karty\31.jpg" />
+    <Content Include="resources\karty\4.jpg" />
+    <Content Include="resources\karty\5.jpg" />
+    <Content Include="resources\karty\6.jpg" />
+    <Content Include="resources\karty\7.jpg" />
+    <Content Include="resources\karty\8.jpg" />
+    <Content Include="resources\karty\9.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
