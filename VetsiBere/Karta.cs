@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VetsiBere
 {
@@ -19,6 +20,7 @@ namespace VetsiBere
         public Image img;
         public Color color;
         public Hrac vlastnikKarty;
+        public PictureBox pictureBox;
         
 
         public Karta()
@@ -30,20 +32,11 @@ namespace VetsiBere
         {
             this.id = id;
             this.hodnota = hodnota;
-            this.color = Color.Black;
         }
 
-        public void vykresliSe(Graphics g, int x, int y)
+        public void nastaveniKarty(PictureBox pictureBox)
         {
-            this.x = x;
-            this.y = y;
-            Brush brush = new SolidBrush(color);
-            g.FillRectangle(brush, x, y, this.width, this.height);
-        }
-
-        public void otevriKartu()
-        {
-
+            this.pictureBox = pictureBox;
         }
     }
 }

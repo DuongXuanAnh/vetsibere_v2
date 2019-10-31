@@ -141,6 +141,7 @@
     <Content Include="resources\karty\7.jpg" />
     <Content Include="resources\karty\8.jpg" />
     <Content Include="resources\karty\9.jpg" />
+    <Content Include="resources\karty\pozadi.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
