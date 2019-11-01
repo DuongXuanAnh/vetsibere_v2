@@ -12,7 +12,7 @@ namespace VetsiBere
 {
     public partial class Form1 : Form
     {
-        int pocetHracu = 4;
+        int pocetHracu = PlayerSelect.playerCount;
         List<Karta> celyBalik;
         List<Karta> kartyNaStole;
         List<Hrac> hraci;
@@ -186,10 +186,6 @@ namespace VetsiBere
 
 
             zacitNovyTurn();
-            Console.WriteLine(hraci[0].balicek.Count);
-            Console.WriteLine(hraci[1].balicek.Count);
-            Console.WriteLine(hraci[2].balicek.Count);
-            Console.WriteLine(hraci[3].balicek.Count);
         }
 
         void zacitNovyTurn()
