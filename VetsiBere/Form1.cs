@@ -12,7 +12,7 @@ namespace VetsiBere
 {
     public partial class Form1 : Form
     {
-        int pocetHracu = 4;
+        int pocetHracu = 6;
         List<Karta> celyBalik;
         List<Karta> kartyNaStole;
         List<Hrac> hraci;
@@ -26,7 +26,7 @@ namespace VetsiBere
         {
             InitializeComponent();
             vytvoritCelyBaleniKaret();
-          //  celyBalik = celyBalik.OrderBy(a => Guid.NewGuid()).ToList(); // Zamichat karty
+            celyBalik = celyBalik.OrderBy(a => Guid.NewGuid()).ToList(); // Zamichat karty
             rozdelitKarty();
             zobrazitBalicky();
          
@@ -158,14 +158,55 @@ namespace VetsiBere
             }
         }
 
+
+
+        //---------------------------------------------------------------
         void zahajitDalsiTurnProVyhranyHrace()
         {
-            Console.WriteLine("Vyhrali vic");
+            smazatOtevrenyKarty();
+            otevreneKarty = new List<Karta>();
+
+            foreach (Hrac hrac in hraci)
+            {
+                
+            }
+            foreach(Hrac hrac in winners)
+            {
+               
+            }
+            Console.WriteLine(hraci[0].balicek.Count);
+            Console.WriteLine(hraci[1].balicek.Count);
+            Console.WriteLine(hraci[2].balicek.Count);
+            Console.WriteLine(hraci[3].balicek.Count);
+            Console.WriteLine(hraci[4].balicek.Count);
+            Console.WriteLine(hraci[5].balicek.Count);
         }
+        //---------------------------------------------------------------
+
 
         void sebratVsechnyKarty(Hrac vitez)
         {
             MessageBox.Show("Bere hrac " + vitez.name);
+
+            smazatOtevrenyKarty();
+
+            for (int i = 0; i < minoBalicek.Count; i++)
+            {
+                vitez.balicek.Insert(0, minoBalicek[i]); // Dat vitezovy vsechny karty
+            }
+
+            zacitNovyTurn();
+        }
+
+        void zacitNovyTurn()
+        {
+            minoBalicek = new List<Karta>();
+            otevreneKarty = new List<Karta>();
+            winners = new List<Hrac>();
+        }
+
+        void smazatOtevrenyKarty()
+        {
             for (int i = 0; i < otevreneKarty.Count; i++)
             {
                 for (int j = 0; j < pocetHracu; j++)
@@ -176,27 +217,8 @@ namespace VetsiBere
                         this.Controls.Remove(otevreneKarty[i].pictureBox);
                     }
                 }
-
             }
-
-            for (int i = 0; i < minoBalicek.Count; i++)
-            {
-                vitez.balicek.Insert(0, minoBalicek[i]); // Dat vitezovy vsechny karty
-            }
-
-
-            zacitNovyTurn();
-            Console.WriteLine(hraci[0].balicek.Count);
-            Console.WriteLine(hraci[1].balicek.Count);
-            Console.WriteLine(hraci[2].balicek.Count);
-            Console.WriteLine(hraci[3].balicek.Count);
         }
-
-        void zacitNovyTurn()
-        {
-            minoBalicek = new List<Karta>();
-            otevreneKarty = new List<Karta>();
-            winners = new List<Hrac>();
-        }
+       
     }
 }
