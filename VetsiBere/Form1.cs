@@ -12,7 +12,9 @@ namespace VetsiBere
 {
     public partial class Form1 : Form
     {
-        int pocetHracu = 6;
+
+        int pocetHracu = PlayerSelect.playerCount;
+
         List<Karta> celyBalik;
         List<Karta> kartyNaStole;
         List<Hrac> hraci;

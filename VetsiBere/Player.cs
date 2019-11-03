@@ -10,16 +10,20 @@ using System.Windows.Forms;
 
 namespace VetsiBere
 {
-    public partial class UC_addPlayer : UserControl
+    public partial class Player : UserControl
     {
-        public UC_addPlayer()
+
+        public string plyerName => textBox1.Text;
+        public event Action<Player> deleteMe;
+
+        public Player()
         {
             InitializeComponent();
         }
 
-        private void btn_delete_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            this.Controls.Clear();
+            deleteMe?.Invoke(this);
         }
     }
 }
