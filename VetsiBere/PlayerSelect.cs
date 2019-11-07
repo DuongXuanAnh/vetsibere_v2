@@ -14,8 +14,9 @@ namespace VetsiBere
     {
         public static string[] playerNames = new string[0];
         public static int playerCount => playerNames.Length;
-        public static string[] defaultNames = new string[]{ "Pepa","Duong","Xuan anh"};
+        public static string[] defaultNames = new string[]{ "Pepa","Duong","Xuan Anh", "David", "Zajda", "Smolik", "Xuan", "Anh"};
         Random r = new Random();
+
         public PlayerSelect()
         {
             InitializeComponent();
@@ -36,14 +37,16 @@ namespace VetsiBere
             List<string> names = new List<string>();
             foreach (Player p in flowLayoutPanel1.Controls)
             {
-                if (p.Name == "")
+                if (p.playerName == "")
                 {
                     names.Add(defaultNames[r.Next(0, defaultNames.Length)]);
                 }
-                else {
-                    names.Add(p.Name);
+                else
+                {
+                    names.Add(p.playerName); // z p.Name
                 }
             }
+
             playerNames = names.ToArray();
 
             Form1 f = new Form1();

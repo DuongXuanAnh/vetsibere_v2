@@ -31,7 +31,7 @@ namespace VetsiBere
 
         private void btn_Nastaveni_Click(object sender, EventArgs e)
         {
-            Nastaveni n = new Nastaveni();
+            PlayerSelect n = new PlayerSelect();
             n.Show();
             this.Hide();
         }

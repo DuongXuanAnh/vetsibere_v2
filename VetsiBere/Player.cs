@@ -13,7 +13,7 @@ namespace VetsiBere
     public partial class Player : UserControl
     {
 
-        public string plyerName => textBox1.Text;
+        public string playerName => textBox1.Text;
         public event Action<Player> deleteMe;
 
         public Player()
