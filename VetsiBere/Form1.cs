@@ -189,7 +189,7 @@ namespace VetsiBere
         //---------------------------------------------------------------
         void zahajitDalsiTurnProVyhranyHrace(int pocetVyhranyHracu)
         {
-            MessageBox.Show("Aspon 2 hrace maji stejne karty");
+            MessageBox.Show("2 hráči mají stejnou kartu.");
             kolaNavic = true;
             smazatOtevrenyKarty();
             otevreneKarty = new List<Karta>();
@@ -203,7 +203,7 @@ namespace VetsiBere
 
         void sebratVsechnyKarty(Hrac vitez)
         {
-            MessageBox.Show("Bere hrac " + vitez.name);
+            MessageBox.Show("Bere hráč " + vitez.name);
 
   
 
