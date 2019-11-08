@@ -24,12 +24,15 @@ namespace VetsiBere
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Player p = new Player();
-            flowLayoutPanel1.Controls.Add(p);
-            p.deleteMe += (Player) =>
+            if(flowLayoutPanel1.Controls.Count < 10)
             {
-                flowLayoutPanel1.Controls.Remove(Player);
-            };
+                Player p = new Player();
+                flowLayoutPanel1.Controls.Add(p);
+                p.deleteMe += (Player) =>
+                {
+                    flowLayoutPanel1.Controls.Remove(Player);
+                };
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

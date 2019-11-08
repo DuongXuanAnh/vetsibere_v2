@@ -167,6 +167,7 @@ namespace VetsiBere
         void porovnatKarty()
         {
             winners = new List<Hrac>();
+      
             int maxHodnota = otevreneKarty.Max(x => x.hodnota);
             foreach (Karta k in otevreneKarty)
             {
@@ -183,6 +184,7 @@ namespace VetsiBere
             else if (winners.Count > 1)
             {
                     zahajitDalsiTurnProVyhranyHrace(winners.Count);
+                    
             }
         }
 
@@ -192,10 +194,8 @@ namespace VetsiBere
             MessageBox.Show("Aspon 2 hrace maji stejne karty");
             kolaNavic = true;
             smazatOtevrenyKarty();
-            otevreneKarty = new List<Karta>();
-
             odebratPristupHrace();
-
+           
         }
 
         //---------------------------------------------------------------
@@ -217,7 +217,7 @@ namespace VetsiBere
                 labels[i].Text = hraci[i].name + " " + hraci[i].balicek.Count;
             }
 
-            odebratHrace();
+           // odebratHrace();
             oznamitVyteze();
             zacitNovyTurn();
         }
@@ -254,6 +254,7 @@ namespace VetsiBere
                     }
                 }
             }
+            otevreneKarty = new List<Karta>();
         }
 
         void odebratPristupHrace()
@@ -267,24 +268,6 @@ namespace VetsiBere
                     k.otevrena = true;
                 }
             }
-        }
-
-        void odebratHrace() // Jestli ma 0 karet
-        {
-            List<Hrac> removeList = new List<Hrac>();
-            foreach(Hrac hrac in hraci)
-            {
-                if(hrac.balicek.Count == 0)
-                {
-                    removeList.Add(hrac);
-                }
-            }
-
-            foreach(Hrac hrac in removeList)
-            {
-                hraci.Remove(hrac);
-            }
-            removeList = new List<Hrac>();
         }
 
         void oznamitVyteze()
