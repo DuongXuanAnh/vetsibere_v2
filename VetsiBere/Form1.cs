@@ -13,15 +13,17 @@ namespace VetsiBere
     public partial class Form1 : Form
     {
 
-        int pocetHracu = PlayerSelect.playerCount;
-        //int pocetHracu = 10;
+        //int pocetHracu = PlayerSelect.playerCount;
+        int pocetHracu = 10;
 
         List<Karta> celyBalik;
         List<Karta> kartyNaStole;
         List<Hrac> hraci;
         List<Karta> otevreneKarty = new List<Karta>();
-        List<Karta> minoBalicek = new List<Karta>();
+        List<Karta> mimoBalicek = new List<Karta>();
         List<Label> labels = new List<Label>();
+
+        List<Hrac> winners = new List<Hrac>();
 
         bool kolaNavic = false;
         
@@ -60,7 +62,8 @@ namespace VetsiBere
             hraci = new List<Hrac>();
             for (int i = 0; i < pocetHracu; i++)
             {
-                Hrac h = new Hrac(i, PlayerSelect.playerNames[i]);
+                //Hrac h = new Hrac(i, PlayerSelect.playerNames[i]);
+                Hrac h = new Hrac(i, "Hrac " + i);
                 hraci.Add(h);
 
                 for (int j = 0; j < celyBalik.Count / pocetHracu; j++)
@@ -74,19 +77,18 @@ namespace VetsiBere
 
         void zobrazitBalicky()
         {
-            
             for (int i = 0; i < pocetHracu; i++)
             {
                 if (i % 2 == 0)
                 {
                     Label l = new Label();
                     l.Text = hraci[i].name + " " + 32 / pocetHracu;
-                    l.Location = new Point(25 + 80 * i, 30);
+                    l.Location = new Point(25 + 80 * i, 25);
                     labels.Add(l);
                     this.Controls.Add(l);
                     foreach (Karta k in hraci[i].balicek)
                     {
-                        PictureBox pictureBox = pictureBox = new PictureBox
+                        PictureBox pictureBox = new PictureBox
                         {
                             Size = new Size(k.width, k.height),
                             Location = new Point(25 + 80 * i, 50),
@@ -111,7 +113,7 @@ namespace VetsiBere
                     this.Controls.Add(l);
                     foreach (Karta k in hraci[i].balicek)
                     {
-                        PictureBox pictureBox = pictureBox = new PictureBox
+                        PictureBox pictureBox = new PictureBox
                         {
                             Size = new Size(k.width, k.height),
                             Location = new Point(25 + 80 * i - 80, 300),
@@ -120,18 +122,14 @@ namespace VetsiBere
                             Tag = k.id
                         };
 
-
                         pictureBox.MouseClick += new MouseEventHandler(card_Click);
                         k.nastaveniKarty(pictureBox);
-                        this.Controls.Add(pictureBox);
-                       
+                        this.Controls.Add(pictureBox);       
                     }
                 }
-
             }
         }
 
-        List<Hrac> winners = new List<Hrac>();
 
         void card_Click(object sender, EventArgs e)
         {
@@ -143,19 +141,19 @@ namespace VetsiBere
                 {
                     pictureBox.Image = k.img;
                     otevreneKarty.Add(k);
-                    minoBalicek.Add(k);
-                    k.otevrena = true;
-                   
-                    if(kolaNavic == true)
-                    {
-                        if(winners.Count == otevreneKarty.Count)
-                        {
-                            porovnatKarty();
-                        }
-                    }
+                    mimoBalicek.Add(k);
+                    k.otevrena = true;                                  
                 }
             }
-           
+
+            if (kolaNavic == true)
+            {
+                if (winners.Count == otevreneKarty.Count)
+                {
+                    porovnatKarty();
+                }
+            }
+
             if (otevreneKarty.Count == pocetHracu)
             {
                 porovnatKarty();
@@ -183,15 +181,14 @@ namespace VetsiBere
             }
             else if (winners.Count > 1)
             {
-                    zahajitDalsiTurnProVyhranyHrace(winners.Count);
-                    
+                    zahajitDalsiTurnProVyhranyHrace();     
             }
         }
 
         //---------------------------------------------------------------
-        void zahajitDalsiTurnProVyhranyHrace(int pocetVyhranyHracu)
+        void zahajitDalsiTurnProVyhranyHrace()
         {
-            MessageBox.Show("2 hráči mají stejnou kartu.");
+            MessageBox.Show("Aspoň 2 hráči mají stejnou kartu.");
             kolaNavic = true;
             smazatOtevrenyKarty();
             odebratPristupHrace();
@@ -204,32 +201,25 @@ namespace VetsiBere
         void sebratVsechnyKarty(Hrac vitez)
         {
             MessageBox.Show("Bere hráč " + vitez.name);
-
-  
-
-            for (int i = 0; i < minoBalicek.Count; i++)
+            for (int i = 0; i < mimoBalicek.Count; i++)
             {
-                vitez.balicek.Insert(0, minoBalicek[i]); // Dat vitezovy vsechny karty
+                vitez.balicek.Insert(0, mimoBalicek[i]); // Dat vitezovy vsechny karty
             }
             smazatOtevrenyKarty();
-            for( int i = 0; i < labels.Count; i++)
-            {
-                labels[i].Text = hraci[i].name + " " + hraci[i].balicek.Count;
-            }
-
-           // odebratHrace();
+           
             oznamitVyteze();
+            ZnovuVygenerovatKarty();
             zacitNovyTurn();
+           
         }
 
         void zacitNovyTurn()
         {
-            minoBalicek = new List<Karta>();
+            mimoBalicek = new List<Karta>();
             otevreneKarty = new List<Karta>();
             winners = new List<Hrac>();
             kolaNavic = false;
-            foreach(Hrac h in hraci)
-            {
+          
                 foreach (Hrac hrac in hraci)
                 {
                     foreach (Karta k in hrac.balicek)
@@ -237,7 +227,7 @@ namespace VetsiBere
                         k.otevrena = false;
                     }
                 }
-            }
+            
         }
 
         void smazatOtevrenyKarty()
@@ -254,7 +244,12 @@ namespace VetsiBere
                     }
                 }
             }
+            for (int i = 0; i < labels.Count; i++)
+            {
+                labels[i].Text = hraci[i].name + " " + hraci[i].balicek.Count;
+            }
             otevreneKarty = new List<Karta>();
+          //  odebratHrace();
         }
 
         void odebratPristupHrace()
@@ -268,6 +263,25 @@ namespace VetsiBere
                     k.otevrena = true;
                 }
             }
+        }
+
+      
+        void odebratHrace() // Jestli ma 0 karet
+        {
+            List<Hrac> removeList = new List<Hrac>();
+            foreach (Hrac hrac in hraci)
+            {
+                if (hrac.balicek.Count == 0)
+                {
+                    removeList.Add(hrac);
+                }
+            }
+
+            foreach (Hrac hrac in removeList)
+            {
+                hraci.Remove(hrac);
+            }
+            removeList = new List<Hrac>();
         }
 
         void oznamitVyteze()
@@ -284,6 +298,11 @@ namespace VetsiBere
                     Application.Exit();
                 }
             }
+        }
+
+        void ZnovuVygenerovatKarty()
+        {
+        
         }
     }
 }
