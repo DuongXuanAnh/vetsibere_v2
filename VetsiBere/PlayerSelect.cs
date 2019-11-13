@@ -12,8 +12,9 @@ namespace VetsiBere
 {
     public partial class PlayerSelect : Form
     {
-        public static string[] playerNames = new string[0];
-        public static int playerCount => playerNames.Length;
+        //public static string[] playerNames = new string[0];
+        public static List<string> playerNames = new List<string>();
+        public static int playerCount => playerNames.Count;
         public static string[] defaultNames = new string[]{ "Pepa","Duong","Xuan Anh", "David", "Zajda", "Smolik", "Xuan", "Anh"};
         Random r = new Random();
 
@@ -59,10 +60,11 @@ namespace VetsiBere
                 }
             }
 
-            playerNames = names.ToArray();
+            playerNames = names;
 
             Form1 f = new Form1();
             Hide();
+            f.TakeThis(playerNames);
             f.ShowDialog();
             Show();
         }

@@ -13,8 +13,8 @@ namespace VetsiBere
     public partial class Form1 : Form
     {
 
-        //int pocetHracu = PlayerSelect.playerCount;
-        int pocetHracu = 10;
+        int pocetHracu = PlayerSelect.playerCount;
+        //int pocetHracu = 10;
 
         List<Karta> celyBalik;
         List<Karta> kartyNaStole;
@@ -22,22 +22,29 @@ namespace VetsiBere
         List<Karta> otevreneKarty = new List<Karta>();
         List<Karta> mimoBalicek = new List<Karta>();
         List<Label> labels = new List<Label>();
-
+        List<string> jmenaHracu = new List<string>();
         List<Hrac> winners = new List<Hrac>();
 
         bool kolaNavic = false;
-        
 
-
-        public Form1()
+        public void TakeThis(List<string> jmena)
         {
-            InitializeComponent();
+            for (int i = 0; i < jmena.Count; i++)
+            {
+                jmenaHracu.Add(jmena[i]);
+            }
             vytvoritCelyBaleniKaret();
             celyBalik = celyBalik.OrderBy(a => Guid.NewGuid()).ToList(); // Zamichat karty
             rozdelitKarty();
             zobrazitBalicky();
-    
         }
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+
 
         private void vytvoritCelyBaleniKaret()
         {
@@ -63,7 +70,7 @@ namespace VetsiBere
             for (int i = 0; i < pocetHracu; i++)
             {
                 //Hrac h = new Hrac(i, PlayerSelect.playerNames[i]);
-                Hrac h = new Hrac(i, "Hrac " + i);
+                Hrac h = new Hrac(i, jmenaHracu[i]);
                 hraci.Add(h);
 
                 for (int j = 0; j < celyBalik.Count / pocetHracu; j++)
