@@ -20,6 +20,15 @@ namespace VetsiBere
         public PlayerSelect()
         {
             InitializeComponent();
+            for (int i = 0; i < 2; i++)
+            {
+                Player p = new Player(defaultNames[r.Next(0, defaultNames.Length)]);
+                flowLayoutPanel1.Controls.Add(p);
+                p.deleteMe += (Player) =>
+                {
+                    flowLayoutPanel1.Controls.Remove(Player);
+                };
+            }     
         }
 
         private void button1_Click(object sender, EventArgs e)

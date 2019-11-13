@@ -21,6 +21,13 @@ namespace VetsiBere
             InitializeComponent();
         }
 
+
+        public Player(string s)
+        {
+            InitializeComponent();
+            textBox1.Text = s;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             deleteMe?.Invoke(this);
